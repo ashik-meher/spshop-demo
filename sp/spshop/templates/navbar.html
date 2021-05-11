@@ -1,0 +1,65 @@
+{% load static %}
+
+<style>
+    .user-msg {
+        font-size: 15px;
+        color: white;
+        padding-left: 18px;
+        text-decoration: none;
+
+    }
+
+    .user-msg:hover {
+        font-size: 15px;
+        color: grey;
+        padding-left: 18px;
+        text-decoration: none;
+
+    }
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <img src="{% static '/images/crm.svg' %}" alt="">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'products' %}">Products</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'show-orders' %}">Orders</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="">Login</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="">Register</a>
+            </li>
+
+        </ul>
+    </div>
+
+
+    <span class="user-msg">Hello, {{request.user}}</span>
+
+    <span><a class="user-msg" href="">logout</a></span>
+</nav>
+
+<script>/*
+$(document).ready(function () {
+$(".user-msg").mouseover(function () {
+$(".user-msg").css("background-color", "yellow");
+});
+$("user-msg").mouseout(function () {
+$(".user-msg").css("background-color", "lightgray");
+});
+});*/
+</script>

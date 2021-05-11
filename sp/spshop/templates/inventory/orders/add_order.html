@@ -1,0 +1,57 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="container">
+
+    <div class="form-group">
+
+        <div class="card card-body" style="text-align: center; width:50%; margin:auto;">
+
+            <h3 style="color:green">Please Fill Up the information below to place a successful order</h3>
+
+            <hr>
+
+            <form id="contact" action="" method="post">
+
+
+                {% csrf_token %}
+
+           
+
+
+
+                {{form.as_p}}
+
+
+                <hr>
+
+              
+
+
+                <button class="btn btn-sm btn-success" name="submit" type="submit" id="contact-submit"
+                    data-submit="...Sending">Submit</button>
+
+
+
+
+
+
+
+            </form>
+
+            <br>
+
+            <a class="btn btn-sm btn-info" href="{% url 'show-orders' %}">Back</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

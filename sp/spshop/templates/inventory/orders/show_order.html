@@ -1,0 +1,111 @@
+{% extends 'main.html' %}
+
+
+
+{% block content %}
+
+
+<div class="container">
+
+    
+
+        <div class="card card-body" style="text-align: center; width:90%; margin:auto;">
+
+         
+            <table class="table table-sm table-bordered">
+
+                <h3>Order Detail</h3>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Date Orderd</th>
+                    <th>Contact</th>
+                    <th>Mail</th>
+                    <th>Status</th>
+                  
+                </tr>
+
+
+                <tr>
+
+                    <td>{{order.name}}</td>
+                    <td>{{order.date_created}}</td>
+                    <td>{{order.phone}}</td>
+                    <td>{{order.email}}</td>
+                    <td>{{order.status}}</td>
+
+                    
+                
+               
+                </tr>
+
+
+                </table>
+
+                <p><b>Order Items</b></p>
+
+                <table class="table table-stripped">
+
+
+
+
+                <tr>
+                    <th>Product Name</th>
+
+                    <th>Quantity</th>
+
+                    <th>Unit Price</th>
+
+                   
+
+
+                </tr>
+
+                
+                {% for item in items %}
+
+
+                <tr>
+
+                    <td>{{item.product.name}}</td>
+
+                    <td>{{item.quantity}}</td>
+
+                    <td>{{item.product.price}}</td>
+
+                    <!--<td>{{item.amount}}</td>-->
+
+
+
+                </tr>
+
+
+                {% endfor %}
+
+               
+
+            </table>
+
+            <hr>
+            <h5 class="btn btn-info" style="text-align: right;"><i>Grand Total &nbsp; &nbsp;  </i> {{subTotal}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h5>
+
+
+
+
+               
+                
+               
+
+                <a class="btn btn-sm btn-success" href="{% url 'add-order-product' order.id %}"> Add product to this order</a><br>
+                <a class="btn btn-sm btn-success" href="{% url 'show-orders' %}"> Back to orders page</a>
+
+        </div>
+
+
+        
+
+  
+
+</div>
+
+
+{% en

@@ -1,0 +1,84 @@
+{% extends 'main.html' %}
+
+{}
+
+{% block content %}
+
+<div class="container">
+<div class="row">
+ 
+
+    <div class="col-md-12">
+
+        <h3>Create an order from inventory </h3>
+
+        <a href="{% url 'add-order' %}" class="btn btn-info">Place Order</a>
+      
+        <hr>
+        <div class="card card-body">
+
+            <h5 style="text-align: center;">ALL ORDERS PLACED SO FAR</h5>
+
+            <table class="table table-sm table-bordered">
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Date Orderd</th>
+                    <th>Contact</th>
+                    <th>Mail</th>
+                    <th>Status</th>
+                    <th>Detail</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+
+                {% for order in orders %}
+
+                <tr>
+
+                    <td>{{order.name}}</td>
+                    <td>{{order.date_created}}</td>
+                    <td>{{order.phone}}</td>
+                    <td>{{order.email}}</td>
+                    <td>{{order.status}}</td>
+                    <td><a class="btn btn-sm btn-success" href="{% url 'show-order' order.id %}"> Detail</a></td>
+                    <td><a class="btn btn-sm btn-info" href="{% url 'update-order' order.id %}"> Update</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'delete-order' order.id %}">Delete</a></td>
+                </tr>
+
+                
+
+                {% endfor %}
+
+
+              {% for orderProduct in orderProducts %}
+
+              {{orderProduct.order_id}}
+
+              {{orderProduct.product_id}}
+
+              {{orderProduct.quantity}}
+
+              {% endfor %}
+
+
+              {% for product in op %}
+
+              {{product.order}}
+
+              {{product.product}}
+
+              {{product.quantity}}
+
+              {% endfor %}
+
+
+
+
+
+            </table>
+        </div>
+    </div>
+
+</div>
+</div>
+{% endblock %}
