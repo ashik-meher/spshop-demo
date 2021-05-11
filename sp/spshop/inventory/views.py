@@ -115,6 +115,8 @@ def show_order(request,pk):
 
 def add_order(request):
 
+
+
     form = OrderForm()
     
 
@@ -125,9 +127,10 @@ def add_order(request):
 
         if form.is_valid():
 
-            form.save()
+            pf = form.save(commit=False)
+            pf.save()
                
-            return redirect('add-order-product')
+            return redirect('add-order-product', pk= pf.id)
 
 
 
@@ -172,19 +175,25 @@ def delete_order(request, pk):
 
 
 
-def add_order_product(request):
+def add_order_product(request,pk):
+    order = Order.objects.get(id=pk)
     form = OrderproductForm()
+    
 
     if request.method == 'POST':
 
         form = OrderproductForm(request.POST)
+        
 
         if form.is_valid():
-            form.save()
+            pf = form.save(commit=False)
+            pf.order = order
+            pf.save()
 
-            return redirect('add-order-product')
+            return redirect('add-order-product', pk=order.id)
+            #return redirect('show-orders')
 
-    context = {'form': form}
+    context = {'form': form, 'order': order}
     
     return render(request,'inventory/ordered_products/add_order_product.html', context)
 

@@ -44,6 +44,14 @@ class OrderForm(forms.ModelForm):
             )
 
         }
+        labels = {
+            'name': 'Please Enter Full Name',
+            'phone': 'Enter your active phone number',
+            'email': 'contact Email Address',
+            'status': 'Order Status',
+            'note': 'Additional Notes'
+        }
+
 
 
 class CustomerForm(forms.ModelForm):
@@ -70,6 +78,8 @@ class OrderproductForm(forms.ModelForm):
     class Meta:
         model = Orderproduct
         fields = '__all__'
+        exclude = ['order']
+        
 
 
 

@@ -14,6 +14,8 @@
 
             <form id="contact" action="" method="post">
 
+                <p>Add Product to <p style="color: blue; background:burlywood">{{order}}</p>  </p>
+
 
                 {% csrf_token %}
 
@@ -28,8 +30,8 @@
               
 
 
-                <button class="btn btn-success" name="submit" type="submit" id="contact-submit"
-                    data-submit="...Sending">Submit</button>
+                <button class="btn btn-sm btn-success" name="submit" type="submit" id="contact-submit"
+                    data-submit="...Sending">Save & Proceed</button>
 
 
 
@@ -39,6 +41,9 @@
 
             </form>
 
+            <br>
+
+            <a class="btn btn-sm btn-success" href="{% url 'show-order' order.id %}">See This Order</a>
             <br>
 
             <a class="btn stn-sm btn-info" href="{% url 'show-orders'%}"> Back To Order Page</a>

@@ -79,7 +79,8 @@ class Order(models.Model):
     note = models.CharField(max_length=1000, null=True)
 
     def __str__(self):
-        return (self.name + '--' + str(self.date_created))
+        orderDate = str(self.date_created) 
+        return ('ORDER-'+ str(self.id) + '-'+self.name + '-' + orderDate[0:10])
     
 
 
@@ -88,7 +89,8 @@ class Orderproduct(models.Model):
     order = models.ForeignKey(Order, on_delete= models.CASCADE)
     product = models.ForeignKey(Product,on_delete= models.CASCADE)
     quantity = models.IntegerField()
-    amount = models.IntegerField()
+    
+  
 
 
 
