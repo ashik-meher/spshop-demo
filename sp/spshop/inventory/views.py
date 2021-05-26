@@ -5,6 +5,8 @@ from .models import *
 
 from .forms import *
 
+from .filters import OrderFilter
+
 
 
 
@@ -78,9 +80,13 @@ def show_orders(request):
 
     #op = orders.orderproduct_set.all()
 
+    orderFilter = OrderFilter(request.GET, queryset=orders)
+
+    orders = orderFilter.qs
+
     
 
-    context = {'orders': orders, 'orderproducts':orderproducts}
+    context = {'orders': orders, 'orderproducts':orderproducts, 'orderFilter': orderFilter}
 
     return render(request, "inventory/orders/orders.html", context)
 
